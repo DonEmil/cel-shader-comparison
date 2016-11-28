@@ -1,7 +1,7 @@
 ﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
-Shader "Cg shader for toon shading" {
+Shader "wiki-shader" {
    Properties {
       _Color ("Diffuse Color", Color) = (1,1,1,1) 
       _UnlitColor ("Unlit Diffuse Color", Color) = (0.5,0.5,0.5,1) 
