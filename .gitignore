@@ -31,4 +31,8 @@ sysinfo.txt
 
 # Added by Emil
 *.bin
+*.info
+*.stamp
+*.log
+*.backup
 
