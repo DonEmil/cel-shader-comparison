@@ -31,10 +31,14 @@ Shader "Toon/Basic Outline" {
 		float3 norm   = normalize(mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal));
 		float2 offset = TransformViewToProjection(norm.xy);
 
+		float vertex2camMagnitude = length(float4(_WorldSpaceCameraPos,0)-o.pos);
+
+		float smallerv2cm = vertex2camMagnitude / 10;
+
 		#ifdef UNITY_Z_0_FAR_FROM_CLIPSPACE //to handle recent standard asset package on older version of unity (before 5.5)
-			o.pos.xy += offset * UNITY_Z_0_FAR_FROM_CLIPSPACE(o.pos.z) * _Outline;
+			o.pos.xy += offset * UNITY_Z_0_FAR_FROM_CLIPSPACE(o.pos.z) * _Outline/smallerv2cm;
 		#else
-			o.pos.xy += offset * o.pos.z * _Outline;
+			o.pos.xy += offset * o.pos.z * _Outline/smallerv2cm;
 		#endif
 		o.color = _OutlineColor;
 		UNITY_TRANSFER_FOG(o,o.pos);
